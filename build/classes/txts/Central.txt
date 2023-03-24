@@ -1,0 +1,10 @@
+int;id;10
+String;nome;20
+String;sobrenome;20
+String;telefone;20
+String;email;20
+Date;nascimento;20
+img;foto;20
+String;filial;20
+String;produto;20
+img;qrcode;20

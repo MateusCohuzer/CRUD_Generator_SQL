@@ -1,0 +1,11 @@
+String;id;10
+Date;data;20
+byte;byte1;20
+short;short1;20
+int;int1;20
+long;long1;20
+float;float1;20
+double;double1;20
+char;char1;20
+boolean;bool1;20
+img;foto;20

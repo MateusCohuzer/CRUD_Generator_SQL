@@ -1,0 +1,4 @@
+String;cpf;20
+String;nome;20
+double;salario;20
+boolean;aposentado;20

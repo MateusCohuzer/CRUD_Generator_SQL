@@ -1,0 +1,8 @@
+int;id;20
+String;nome;20
+Date;aniversario;20
+boolean;ta_morto;20
+double;dinheiros_no_banco;20
+short;idade;20
+long;ano_nascido;20
+img;foto;20

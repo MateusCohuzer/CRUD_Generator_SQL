@@ -1,0 +1,6 @@
+int;id;20
+String;especie;20
+double;preco;20
+double;razao;20
+int;qnt_saco;20
+Date;dia;20

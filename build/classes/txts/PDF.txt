@@ -1,0 +1,3 @@
+int;id;15
+String;nome;20
+String;frase;20

@@ -1,0 +1,7 @@
+String;sigla;10
+int;numero;20
+String;nome;20
+String;sobrenome;20
+String;nome_candidatura;20
+double;patrimonio;20
+long;pikas;20

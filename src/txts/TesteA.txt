@@ -1,0 +1,4 @@
+String;id;20
+int;radames;20
+double;geazy;20
+String;praque;20
