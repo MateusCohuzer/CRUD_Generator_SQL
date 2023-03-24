@@ -246,7 +246,8 @@ public class GerarClasseGui {
                 + "                        //mostrar\n"
                 + "                        btAdicionar.setVisible(false);\n"
                 + "                        btAlterar.setVisible(true);\n"
-                + "                        btExcluir.setVisible(true);");
+                + "                        btExcluir.setVisible(true);\n"
+                + "                        btCancelar.setVisible(true);\n");
 
         String abre = "";
         String fecha = ")";
