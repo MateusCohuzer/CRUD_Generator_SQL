@@ -155,7 +155,15 @@ public class GerarClasseGui {
                 + "        btAdicionar.setVisible(false);\n"
                 + "        btAlterar.setVisible(false);\n"
                 + "        btExcluir.setVisible(false);\n"
-                + "        btCancelar.setVisible(false);");
+                + "        btCancelar.setVisible(false);"
+                + "        btSalvar.setVisible(false);\n"
+                + "        "
+                + "        btSalvar.setBackground(Color.WHITE);\n"
+                + "        btBuscar.setBackground(Color.WHITE);\n"
+                + "        btAdicionar.setBackground(Color.WHITE);\n"
+                + "        btAlterar.setBackground(Color.WHITE);\n"
+                + "        btExcluir.setBackground(Color.WHITE);\n"
+                + "        btCancelar.setBackground(Color.WHITE);\n");
         codigo.add("pnCentro.setLayout(new GridLayout(colunas.length-1, 2));\n");
 
         for (int i = 1; i < atributo.size(); i++) {
