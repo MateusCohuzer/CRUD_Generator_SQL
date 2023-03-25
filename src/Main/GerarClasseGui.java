@@ -160,6 +160,7 @@ public class GerarClasseGui {
                 + "        "
                 + "        btSalvar.setBackground(Color.WHITE);\n"
                 + "        btBuscar.setBackground(Color.WHITE);\n"
+                + "        btListar.setBackground(Color.WHITE);\n"
                 + "        btAdicionar.setBackground(Color.WHITE);\n"
                 + "        btAlterar.setBackground(Color.WHITE);\n"
                 + "        btExcluir.setBackground(Color.WHITE);\n"
