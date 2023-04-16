@@ -1,0 +1,5 @@
+int;id;25
+String;nome;25
+String;classe;25
+String;raca;25
+int;idade;25
