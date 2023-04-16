@@ -20,6 +20,10 @@ public class GerarDAOs {
         List<String> codigo = new ArrayList();
         st st = new st();
         String nomeDaClasseMin = st.plMinus(nomeDaClasse);
+        
+        String[] aux = atributo.get(0).split(";");
+        String[] aux1 = atributo.get(1).split(";");
+        
         codigo.add("package DAOs;\n\n\n");
 
         codigo.add("import Entidades." + nomeDaClasse + ";\n"
@@ -41,7 +45,7 @@ public class GerarDAOs {
                 + "    }\n");
 
         codigo.add("public int autoId" + nomeDaClasse + "() {\n"
-                + "        Integer a = (Integer) em.createQuery(\"SELECT MAX(e.PK) FROM " + nomeDaClasse + " e \").getSingleResult();ARRUME O QUE VEM APÓS O .pk \n"
+                + "        Integer a = (Integer) em.createQuery(\"SELECT MAX(e." + aux[1] + ") FROM " + nomeDaClasse + " e \").getSingleResult(); \n"
                 + "        if (a != null) {\n"
                 + "            return a + 1;\n"
                 + "        } else {\n"
@@ -50,21 +54,21 @@ public class GerarDAOs {
                 + "    }\n"
                 + "\n"
                 + "    public List<" + nomeDaClasse + "> listByNome(String nome) {\n"
-                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e WHERE e.PK LIKE :nome\") VEM PRA ESSA LINHA AGORA\n"
+                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e WHERE e." + aux[1] + " LIKE :nome\")\n"
                 + "         .setParameter(\"nome\", \"%\" + nome + \"%\")\n"
                 + "         .getResultList();\n"
                 + "    }\n"
                 + "\n"
                 + "    public List<" + nomeDaClasse + "> listById(int id) {\n"
-                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e WHERE e.ERROR= :id\").setParameter(\"id\", id).getResultList(); AGORA ESSA LINHA\n"
+                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e WHERE e." + aux1[1] + "= :id\").setParameter(\"id\", id).getResultList();\n"
                 + "    }\n"
                 + "\n"
                 + "    public List<" + nomeDaClasse + "> listInOrderNome() {\n"
-                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e ORDER BY e.ERRO\").getResultList(); YODOLÉIRRU\n"
+                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e ORDER BY e." + aux[1] + "\").getResultList();\n"
                 + "    }\n"
                 + "\n"
                 + "    public List<" + nomeDaClasse + "> listInOrderId() {\n"
-                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e ORDER BY e.ERRO\").getResultList(); ASTRID PARA SEMPRE\n"
+                + "        return em.createQuery(\"SELECT e FROM " + nomeDaClasse + " e ORDER BY e." + aux1[1] + "\").getResultList();\n"
                 + "    }\n"
                 + "\n"
                 + "    public List<String> listInOrderNomeStrings(String qualOrdem) {\n"
@@ -77,7 +81,7 @@ public class GerarDAOs {
                 + "\n"
                 + "        List<String> ls = new ArrayList<>();\n"
                 + "        for (int i = 0; i < lf.size(); i++) {\n"
-                + "            ls.add(lf.get(i).getCpf()+ \"-\" + lf.get(i).getNome()); ARRUMA ISSO AQUI DE ACORDO COM A ENTIDADE\n"
+                + "            ls.add(lf.get(i).get" + aux1[1] + "()+ \"-\" + lf.get(i).get" + aux[1] + "());\n"
                 + "        }\n"
                 + "        return ls;\n"
                 + "    }\n"
