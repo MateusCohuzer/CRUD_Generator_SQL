@@ -1,0 +1,3 @@
+int;idfiliacao;25
+String;filiacao;25
+String;desc_filiacao;25

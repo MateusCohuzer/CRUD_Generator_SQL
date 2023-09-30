@@ -1,0 +1,2 @@
+int;idpais;25
+String;nome_pais;25

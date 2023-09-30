@@ -1,0 +1,3 @@
+int;idgrade;25
+String;nome_grade;25
+String;descricao;25

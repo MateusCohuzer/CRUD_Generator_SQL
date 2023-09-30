@@ -1,0 +1,2 @@
+int;idcor_cabelo;25
+String;cor;25

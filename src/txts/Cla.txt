@@ -1,0 +1,3 @@
+int;idcla;25
+String;nome_cla;25
+String;desc_cla;25

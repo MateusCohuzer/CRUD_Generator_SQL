@@ -1,0 +1,4 @@
+int;idjujutsu;25
+String;jujutsu_name;25
+String;jujutsu_desc;25
+int;dano_base;25

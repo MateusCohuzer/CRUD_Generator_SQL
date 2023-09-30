@@ -1,0 +1,3 @@
+int;idcor_olhos;25
+String;cor;25
+short;heterocromia;25

@@ -102,7 +102,7 @@ public class GerarClasseGui {
                         + "    int tamY" + st.plMaiusc(aux[1]) + " = 300;\n"
                         + "    String temFoto" + st.plMaiusc(aux[1]) + ";\n"
                         + "    CopiarArquivos copiarArquivos" + st.plMaiusc(aux[1]) + " = new CopiarArquivos();\n");
-            } else if ("boolean".equals(aux[0])) {
+            } else if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("\nJCheckBox check" + st.plMaiusc(aux[1]) + " = new JCheckBox();\n");
             } else {
                 codigo.add("JTextField tf" + st.plMaiusc(aux[1]) + " = new JTextField(" + aux[2] + ");\n");
@@ -172,7 +172,7 @@ public class GerarClasseGui {
             if ("img".equals(aux[0])) {
                 codigo.add("pnCentro.add(lbPath" + st.plMaiusc(aux[1]) + ");\n"
                         + "pnCentro.add(lb" + st.plMaiusc(aux[1]) + ");\n");
-            } else if ("boolean".equals(aux[0])) {
+            } else if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("pnCentro.add(lb" + st.plMaiusc(aux[1]) + ");\n");
                 codigo.add("pnCentro.add(check" + st.plMaiusc(aux[1]) + ");\n");
             } else {
@@ -199,7 +199,7 @@ public class GerarClasseGui {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setEditable(true);\n");
             } else if ("img".equals(aux[0])) {
                 codigo.add("");
-            } else if ("boolean".equals(aux[0])) {
+            } else if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setSelected(false);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setText(\"\");\n");
@@ -288,7 +288,7 @@ public class GerarClasseGui {
                     abre = "String.valueOf(";
                     fecha = ")";
             }
-            if ("boolean".equals(aux[0])) {
+            if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setSelected(" + nomeDaClasseMin + ".get" + st.plMaiusc(aux[1]) + "()==1?true:false);\n");
             } else if (!"img".equals(aux[0])) {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setText(" + abre + ""
@@ -305,7 +305,7 @@ public class GerarClasseGui {
                 + "                        btExcluir.setVisible(false);\n");
         for (int i = 0; i < atributo.size(); i++) {
             aux = atributo.get(i).split(";");
-            if (i != 0 && !"boolean".equals(aux[0]) && !"img".equals(aux[0])) {
+            if (i != 0 && !"boolean".equals(aux[0]) && !"img".equals(aux[0]) && !"short".equals(aux[0])) {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setText(\"\");\n");
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setEditable(false);\n");
             } else if ("img".equals(aux[0])) {
@@ -314,7 +314,7 @@ public class GerarClasseGui {
                         + "                    ImageIcon ii = imagemAjustada" + st.plMaiusc(aux[1]) + ".getImagemAjustada(dirApp" + st.plMaiusc(aux[1]) + " + \"/src/icones/std.png\", tamX" + st.plMaiusc(aux[1]) + ", tamY" + st.plMaiusc(aux[1]) + ");\n"
                         + "                    lb" + st.plMaiusc(aux[1]) + ".setIcon(ii);\n"
                         + "                    lbPath" + st.plMaiusc(aux[1]) + ".setText(dirApp" + st.plMaiusc(aux[1]) + " + \"/src/icones/std.png\");");
-            } else if ("boolean".equals(aux[0])) {
+            } else if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setSelected(false);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setEditable(true);\n");
@@ -342,7 +342,7 @@ public class GerarClasseGui {
             }
             if ("img".equals(aux[0])) {
                 codigo.add("temFoto" + st.plMaiusc(aux[1]) + " = \"Não\";\n");
-            } else if ("boolean".equals(aux[0])) {
+            } else if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setEnabled(true);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setEditable(true);\n");
@@ -365,17 +365,18 @@ public class GerarClasseGui {
 
         for (int i = 0; i < atributo.size(); i++) {
             aux = atributo.get(i).split(";");
-            if ("boolean".equals(aux[0])) {
+            if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("Short " + aux[1] + "_escopo;\n"
                         + "                    if (check" + st.plMaiusc(aux[1]) + ".isSelected()) {\n"
                         + "                        " + aux[1] + "_escopo = (short)1;\n"
                         + "                    } else {\n"
                         + "                        " + aux[1] + "_escopo = (short)0;\n"
-                        + "                    }"
-                        + "                if (acao.equals(\"alterar\")) {\n");
+                        + "                    }");
             }
         }
 
+        codigo.add("if (acao.equals(\"alterar\")) {\n");
+        
         for (int i = 0; i < atributo.size(); i++) {
             aux = atributo.get(i).split(";");
             fecha = ")";
@@ -397,7 +398,8 @@ public class GerarClasseGui {
                     abre = "Byte.valueOf(";
                     break;
                 case "short":
-                    abre = "Short.valueOf(";
+                    abre = "(" + aux[1] + "_escopo";
+                    fecha = ")";
                     break;
                 case "float":
                     abre = "Float.valueOf(";
@@ -423,7 +425,7 @@ public class GerarClasseGui {
                 default:
                     abre = "DESCONHECIDO.valueOf(";
             }
-            if ("boolean".equals(aux[0])) {
+            if ("boolean".equals(aux[0])  || "short".equals(aux[0])) {
                 codigo.add("" + nomeDaClasseMin + ".set" + st.plMaiusc(aux[1]) + abre + fecha + ";");
             } else if (!"img".equals(aux[0])) {
                 codigo.add("" + nomeDaClasseMin + ".set" + st.plMaiusc(aux[1]) + "(" + abre + "tf" + st.plMaiusc(aux[1]) + ".getText())" + fecha + ";");
@@ -452,8 +454,8 @@ public class GerarClasseGui {
                     abre = "Byte.valueOf(";
                     break;
                 case "short":
-                    abre = "Short.valueOf(";
-                    break;
+                    abre = "(" + aux[1] + "_escopo";
+                    fecha = ")";
                 case "float":
                     abre = "Float.valueOf(";
                     break;
@@ -478,7 +480,7 @@ public class GerarClasseGui {
                 default:
                     abre = "DESCONHECIDO.valueOf(";
             }
-            if ("boolean".equals(aux[0])) {
+            if ("boolean".equals(aux[0]) || "short".equals(aux[0])) {
                 codigo.add("" + nomeDaClasseMin + ".set" + st.plMaiusc(aux[1]) + abre + fecha+";");
             } else if (!"img".equals(aux[0])) {
                 codigo.add("" + nomeDaClasseMin + ".set" + st.plMaiusc(aux[1]) + "(" + abre + "tf" + st.plMaiusc(aux[1]) + ".getText())" + fecha + ";");
@@ -504,7 +506,7 @@ public class GerarClasseGui {
                         + "                ImageIcon ii = imagemAjustada" + st.plMaiusc(aux[1]) + ".getImagemAjustada(dirApp" + st.plMaiusc(aux[1]) + " + \"/src/icones/std.png\", tamX" + st.plMaiusc(aux[1]) + ", tamY" + st.plMaiusc(aux[1]) + ");\n"
                         + "                lb" + st.plMaiusc(aux[1]) + ".setIcon(ii);\n"
                         + "                lbPath" + st.plMaiusc(aux[1]) + ".setText(dirApp" + st.plMaiusc(aux[1]) + " + \"/src/icones/std.png\");");
-            } else if ("boolean".equals(aux[0])) {
+            } else if ("boolean".equals(aux[0])  || "short".equals(aux[0])) {
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setSelected(false);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setText(\"\");\n"
@@ -534,7 +536,7 @@ public class GerarClasseGui {
             }
             if ("img".equals(aux[0])) {
                 codigo.add("temFoto" + st.plMaiusc(aux[1]) + " = \"Não\";\n");
-            } else if("boolean".equals(aux[0])){
+            } else if("boolean".equals(aux[0])  || "short".equals(aux[0])){
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setEnabled(true);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setEditable(true);\n");
@@ -579,7 +581,7 @@ public class GerarClasseGui {
                         + "                } else {\n"
                         + "                    System.out.println(\"hahahahah não achei\");\n"
                         + "                }");
-            } else if("boolean".equals(aux[0])){
+            } else if("boolean".equals(aux[0])  || "short".equals(aux[0])){
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setEnabled(true);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setText(\"\");\n");
@@ -644,7 +646,7 @@ public class GerarClasseGui {
             aux = atributo.get(i).split(";");
             if ("img".equals(aux[0])) {
                 codigo.add("");
-            } else if("boolean".equals(aux[0])){
+            } else if("boolean".equals(aux[0])  || "short".equals(aux[0])){
                 codigo.add("check" + st.plMaiusc(aux[1]) + ".setEnabled(false);\n");
             } else {
                 codigo.add("tf" + st.plMaiusc(aux[1]) + ".setText(\"\");\n");

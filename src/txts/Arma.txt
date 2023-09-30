@@ -1,0 +1,4 @@
+int;idraca;25
+String;nome_arma;25
+String;desc_arma;25
+int;dano;25
